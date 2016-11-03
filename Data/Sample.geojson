@@ -1,0 +1,203 @@
+{
+    "features": [
+    
+        {
+            "geometry": {
+                "geometries": [
+                    {
+                        "coordinates": [
+                            [
+                                [
+                                1.09,9.64],[
+0.36	,7.39],[
+1.13	,5.49],[
+0.87	,4.10],[
+1.11	,2.10],[
+2.15	,1.76],[
+3.03	,0.92],[
+4.37	,0.79],[
+2.95	,4.06],[
+2.69	,7.00],[
+1.09	,9.64
+
+                                   ]
+                            ]
+                        ],
+                        "type": "Polygon"
+                    }
+                ],
+                "type": "GeometryCollection"
+            },
+            "type": "Feature",
+            "properties": {
+                "fill_color": "aa0000df",
+                "LineStyle": {
+                    "color": "ff000000",
+                    "width": 1.5
+                }
+            }
+        },
+          {
+            "geometry": {
+                "geometries": [
+                    {
+                        "coordinates": [
+                            [
+                                [
+                                1.09,	9.64],[
+2.69,	7.00],[
+2.95,	4.06],[
+4.37,	0.79],[
+5.32,	1.49],[
+7.20,	1.20],[
+8.30,	2.30],[
+9.21,	2.20],[
+10.28,	2.68],[
+10.40,	3.70],[
+8.60,	5.00],[
+7.79,	8.00],[
+7.50,	10.20],[
+6.10,	11.25],[
+3.95,	10.80],[
+3.42,	9.60],[
+2.18,	9.80],[
+1.09,	9.64
+
+                                   ]
+                            ]
+                        ],
+                        "type": "Polygon"
+                    }
+                ],
+                "type": "GeometryCollection"
+            },
+            "type": "Feature",
+            "properties": {
+                "fill_color": "aa0000df",
+                "LineStyle": {
+                    "color": "ff000000",
+                    "width": 1.5
+                }
+            }
+        },
+          {
+            "geometry": {
+                "geometries": [
+                    {
+                        "coordinates": [
+                            [
+                                [
+                               6.10,	11.25],[
+7.50,	10.20],[
+7.79,	8.00],[
+8.60,	5.00],[
+10.40,	3.70],[
+10.28,	2.68],[
+11.20,	3.71],[
+11.40,	4.10],[
+11.70,	5.10],[
+11.30,	6.60],[
+11.20,	9.20],[
+9.30,	9.80],[
+9.20,	10.75],[
+6.10,	11.25
+
+
+                                   ]
+                            ]
+                        ],
+                        "type": "Polygon"
+                    }
+                ],
+                "type": "GeometryCollection"
+            },
+            "type": "Feature",
+            "properties": {
+                "fill_color": "aa0000df",
+                "LineStyle": {
+                    "color": "ff000000",
+                    "width": 1.5
+                }
+            }
+        },  {
+            "geometry": {
+                "geometries": [
+                    {
+                        "coordinates": [
+                            [
+                                [
+                                1.09,	9.64],[
+2.18,	9.80],[
+3.42,	9.60],[
+3.95,	10.80],[
+6.10,	11.25],[
+9.20,	10.75],[
+9.30,	9.80],[
+10.00,	11.00],[
+10.00,	12.00],[
+9.00,	13.00],[
+8.00,	14.00],[
+6.00,	13.50],[
+4.00,	13.00],[
+2.00,	12.00],[
+1.09,	9.64
+
+                                   ]
+                            ]
+                        ],
+                        "type": "Polygon"
+                    }
+                ],
+                "type": "GeometryCollection"
+            },
+            "type": "Feature",
+            "properties": {
+                "fill_color": "aa0000df",
+                "LineStyle": {
+                    "color": "ff000000",
+                    "width": 1.5
+                }
+            }
+        },
+         {
+            "geometry": {
+                "geometries": [
+                    {
+                        "coordinates": [
+                            [
+                     [
+                            11.00,	11.00],[
+                            13.00,	9.00],[
+                            15.00,	12.00],[
+                            13.00,	14.00],[
+                            9.00,	15.00],[
+                            11.00,	13.00],[
+                            11.00,	11.00
+
+                                   ]
+                            ]
+                        ],
+                        "type": "Polygon"
+                    }
+                ],
+                "type": "GeometryCollection"
+            },
+            "type": "Feature",
+            "properties": {
+                "fill_color": "aa0000df",
+                "LineStyle": {
+                    "color": "ff000000",
+                    "width": 1.5
+                }
+            }
+        }
+    ],
+    "type": "FeatureCollection",
+    "properties": {
+        "alpha3": "AFG",
+        "name": "Afghanistan",
+        "name_ru": "Афганистан",
+        "description": "\u003cdiv class=\"googft-info-window\" style=\"font-family:sans-serif\"\u003e\n\u003cb\u003eАфганистан\u003c/b\u003e\n\u003c/div\u003e"
+    }
+}
+
