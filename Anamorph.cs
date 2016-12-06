@@ -30,7 +30,7 @@ namespace Anamorphing.Math
         ///</summary>
         private static void sortPoints(ref FeatureCollection Country, List<GeoPoint> CenterCells)
         {
-            double[][] Angles = new double[Country.cellCount()][];
+             double[][] Angles = new double[Country.cellCount()][];
             for (int i = 0; i < Country.cellCount(); i++)
             {
                 double[] Angle_i = new double[Country.vertexCount(i)];
@@ -182,7 +182,29 @@ namespace Anamorphing.Math
             FeatureCollection Object = JsonConvert.DeserializeObject<FeatureCollection>(geojson, sett);
             FeatureCollection TempObject = JsonConvert.DeserializeObject<FeatureCollection>(geojson, sett);
 
+            //Собираем все точки
+                    for (int i = 0; i < Object.cellCount(); i++)
+                    {
+                        for (int j = 0; j < Object.vertexCount(i); j++)
+                        {
+                            if(!Object.all_x.Contains(Object.getX_First(i, j)))
+                                Object.all_x.Add(Object.getX_First(i, j));
+                            Object.setX_ref(i,j,Object.all_x.LastIndexOf(Object.getX_First(i, j)));
 
+                            if(!Object.all_y.Contains(Object.getY_First(i, j)))
+                                Object.all_y.Add(Object.getY_First(i, j));
+                            Object.setY_ref(i,j,Object.all_y.LastIndexOf(Object.getY_First(i, j)));
+                        }
+                    }
+         //Тест 1 квадрата
+          for (int j = 0; j < Object.vertexCount(0); j++)
+                        {
+                            System.Console.WriteLine(Object.getX(0,j)+"|"+Object.getY(0,j)+" ref "+Object.getX_ref(0,j)+"|"+Object.getY_ref(0,j));
+                        }
+                           for (int j = 0; j < Object.vertexCount(1); j++)
+                        {
+                            System.Console.WriteLine(Object.getX(1,j)+"|"+Object.getY(1,j) +" ref "+Object.getX_ref(1,j)+"|"+Object.getY_ref(1,j));
+                        }
 
             Console.WriteLine("Ячеек = " + Object.features.Count);
 
@@ -193,9 +215,6 @@ namespace Anamorphing.Math
             }
             else
             {
-
-
-
                 //1. Определить количество анаморфируемых ячеек ;
                 //2. Определить координаты вершин границы анаморфируемых ячеек , где  – количество вершин границы ячейки;
                 //3. Задать погрешность анаморфирования ε;
@@ -218,7 +237,6 @@ namespace Anamorphing.Math
                         item.setY(y / Object.vertexCount(i));
 
                         CenterCells.Add(item);
-                        //  Console.WriteLine(x / Object.vertexCount(i) + "," + y / Object.vertexCount(i));
                     }
                 }
                 catch (Exception e)
@@ -352,7 +370,7 @@ namespace Anamorphing.Math
                     for (int i = 0; i < Object.cellCount(); i++)
                     {
                         double Square = 0;
-                        for (int j = Object.vertexCount(i) - 1; j >= 0; j--)
+                        for (int j = 0; j < Object.vertexCount(i); j++)
                         {
                             if (j == Object.vertexCount(i) - 1)
                                 Square += (Object.getX(i, j) - Object.getX(i, 0)) * (Object.getY(i, j) + Object.getY(i, 0));
@@ -366,7 +384,7 @@ namespace Anamorphing.Math
                     }
                     c++;
 
-                } while (checkError(MorphSquares, NewSquares, ErrorMorph) && c != 1);
+                } while (checkError(MorphSquares, NewSquares, ErrorMorph) && c != 10);
                 for (int i = 0; i < TempObject.cellCount(); i++)
                 {
                     for (int j = 0; j < TempObject.vertexCount(i); j++)

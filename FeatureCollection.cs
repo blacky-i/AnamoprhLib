@@ -27,13 +27,24 @@ namespace Anamorphing.Models
         ///</summary>
         public double getX(int num_cell, int num_vertex)
         {
+            return all_x[features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex][0]];
+        }
+        ///<summary>
+        ///Helper для получения координаты У
+        ///</summary>
+        public double getY(int num_cell, int num_vertex)
+        {
+            return all_y[features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex][1]];
+        }
+              public double getX_First(int num_cell, int num_vertex)
+        {
             //geomtries[0]-???? Coordinates[0][][]-???
             return features[num_cell].geo.geometries[0].Coordinates[0][num_vertex][0];
         }
         ///<summary>
         ///Helper для получения координаты У
         ///</summary>
-        public double getY(int num_cell, int num_vertex)
+        public double getY_First(int num_cell, int num_vertex)
         {
             //geomtries[0]-???? Coordinates[0][][]-???
             return features[num_cell].geo.geometries[0].Coordinates[0][num_vertex][1];
@@ -44,31 +55,58 @@ namespace Anamorphing.Models
         ///</summary>
         public void setX(int num_cell, int num_vertex, double newValue)
         {
-            features[num_cell].geo.geometries[0].Coordinates[0][num_vertex][0] = newValue;
+           all_x[getX_ref(num_cell,num_vertex)] = newValue;
         }
         ///<summary>
         ///Helper установка нового значения У
         ///</summary>
         public void setY(int num_cell, int num_vertex, double newValue)
         {
-            features[num_cell].geo.geometries[0].Coordinates[0][num_vertex][1] = newValue;
+            all_y[getY_ref(num_cell,num_vertex)] = newValue;
         }
 
         public void setX_ref(int num_cell, int num_vertex, int newValue)
         {
-            features[num_cell].geo.geometries[0].x_ref = newValue;
+            if(features[num_cell].geo.geometries[0].coordinates_ref.Count==0)
+               {
+                   features[num_cell].geo.geometries[0].coordinates_ref.Add(new List<List<int>>());
+
+
+               } 
+            if(features[num_cell].geo.geometries[0].coordinates_ref[0].Count-1<num_vertex)
+                {
+                    features[num_cell].geo.geometries[0].coordinates_ref[0].Add(new List<int>());
+                    features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex].Add(-1);
+                    features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex].Add(-1);
+
+                }
+            features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex][0] = newValue;
         }
+        ///<summary>
+        ///Helper установка нового значения У
+        ///</summary>
         public void setY_ref(int num_cell, int num_vertex, int newValue)
         {
-            features[num_cell].geo.geometries[0].y_ref = newValue;
+            if(features[num_cell].geo.geometries[0].coordinates_ref.Count==0)
+               {
+                   features[num_cell].geo.geometries[0].coordinates_ref.Add(new List<List<int>>());
+                   features[num_cell].geo.geometries[0].coordinates_ref[0].Add(new List<int>());
+               } 
+            if(features[num_cell].geo.geometries[0].coordinates_ref[0].Count-1<num_vertex)
+                {
+                    features[num_cell].geo.geometries[0].coordinates_ref[0].Add(new List<int>());
+                    features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex].Add(-1);
+                    features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex].Add(-1);
+                }
+            features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex][1] = newValue;
         }
-            public int getX_ref(int num_cell, int num_vertex, int newValue)
+            public int getX_ref(int num_cell, int num_vertex)
         {
-            return features[num_cell].geo.geometries[0].x_ref;
+            return features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex][0];
         }
-        public int getY_ref(int num_cell, int num_vertex, int newValue)
+        public int getY_ref(int num_cell, int num_vertex)
         {
-            return features[num_cell].geo.geometries[0].y_ref;
+            return features[num_cell].geo.geometries[0].coordinates_ref[0][num_vertex][1];
         }
 
         ///<summary>
@@ -109,10 +147,12 @@ namespace Anamorphing.Models
 
     public class AnamorphCell
     {
+        AnamorphCell()
+        {
+            coordinates_ref=new List<List<List<int>>>();
+        }
         [JsonIgnore]
-        public int x_ref { get; set; }
-        [JsonIgnore]
-        public int y_ref { get; set; }
+        public List<List<List<int>>> coordinates_ref;
 
         [JsonProperty("coordinates")]
         public List<List<List<double>>> Coordinates;

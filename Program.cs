@@ -18,7 +18,7 @@ namespace Anamorphing
             }
             for (int i = 0; i < Pokazateli.Length; i++)
             {
-                Console.WriteLine("Sigmoid -" + i + " " + sigmoidFunction(Pokazateli[i], max, min));
+               // Console.WriteLine("Sigmoid -" + i + " " + sigmoidFunction(Pokazateli[i], max, min));
                 Pokazateli[i] = sigmoidFunction(Pokazateli[i], max, min);
             }
         }
